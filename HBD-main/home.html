@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+    <!-- <audio id="song" src="count_on_me.mp3">
+
+    </audio> -->
+    <canvas id="c" style="width:100%"></canvas>
+    <div class="bdwish">HAPPY BIRTHDAY DANIYYAAA!!!
+      <h6>click anywhere on the screen and blow the candles</h6>
+    </div>
+    
+
+    <div class="cake">
+        <div class="plate"></div>
+        <div class="layer layer-bottom-1"></div>
+
+        <div class="layer layer-bottom"></div>
+        
+        <div class="layer layer-middle"></div>
+        <div class="layer layer-top"></div>
+        <div class="icing"></div>
+        <div class="drip drip1"></div>
+        <div class="drip drip2"></div>
+        <div class="drip drip3"></div>
+
+        <div class="candle">
+            <div class="flame" id="flame1"></div>
+        </div>
+        <div class="candle" style="left: 75px;">
+            <div class="flame" id="flame2"></div>
+        </div>
+        <div class="candle" style="left: 175px;">
+            <div class="flame" id="flame3"></div>
+        </div>
+        <div class="candle" style="left: 150px; top: 25px;">
+            <div class="flame" id="flame4"></div>
+        </div>
+        <div class="candle" style="left: 210px; top: 10px;">
+            <div class="flame" id="flame5"></div>
+        </div>
+        <div class="candle" style="left: 100px; top: 25px;">
+            <div class="flame" id="flame6"></div>
+        </div>
+        <div class="candle" style="left: 45px; top: 10px;">
+            <div class="flame" id="flame7"></div>
+        </div>
+
+
+    </div>
+
+
+
+  <div class="bdmsg" >
+    <h4>Hover over the card</h4>
+    <div class="birthdayCard">
+      <div class="cardFront">
+        <div class="front-text">
+          <h3 class="happy">HAPPY</h3>
+          <h2 class="bday">BIRTHDAY</h2> 
+          <h3 class="toyou">to you!</h3>  
+        </div>
+        <div class="plate_card">
+          <img src="images/card_cover.jpeg" style="width:500px; height:500px"/>
+        </div>
+      </div>
+        
+        <div class="cardInside">
+           <!-- <div class="inside-text">
+              <h3 class="happy">HAPPY</h3>
+              <h2 class="bday">BIRTHDAY</h2> 
+              <h3 class="toyou">to you!</h3>  
+            </div> -->
+          <div class="wishes">
+          <p>Dear Dan,</p>
+          <p>A very happy birthdayy to one of the sweetest and kindest person ik! Happy Birthday to u Daniya💖! 
+          </p>
+          <p>I’m not a birthday celebration person actually, I did this mostly cos when the fact that ur bd was around hit my mind, this idea just came outa nowhere(and kinda insta too), and the only thing i felt was ki you are a person who deserves this(even tho idt this is also enough for someone like u)..soo yea, I hope u like it! :).
+            </p>
+          <p>You are one of the best artist I've met(others mostly became my rival actually, lol) but yeaa, honestly, I'm a fan of your work!!</p>
+          <p>And also, you are a beautiful person with a great personality!, and I just wish to know you more. And even this I could have made it personalized and better uk..but i hardly knew anything more abt u and I really regret abt that.
+            
+          </p>
+          <p>
+            Anywaysss..many many happy returns of the day, enjoy ur day to the fullest, and I always hope the best for u and ur future!
+            
+          </p>
+          <p>Take care, and happy birthday future Doctor!❤️</p>
+          <p class="name">                     ~Fardeen</p>
+          </div>
+        </div>
+      </div>
+
+  </div>
+
+<div class="frworks">
+<h1>Anyways....</h1>
+
+<div class = f_text>
+<h2>Once again, Happy Birthday to you Daniya💖! You deserve all the love, success and happiness that the world has to offer, Enjoy ur day
+</h2>
+<h2>Honestly..I am not at all good with poems and quotes, but..here's one for you. Sorry u have to bear with it. </h2>
+<h2>She's so beautiful, just like a flower,</h2>
+<h2>Her quotes are so simple, yet they startle</h2>
+<h2>Her nature..so kind and sweet,</h2>
+<h2>Her art, never complex as mine but makes me bewilder</h2>
+<h2>Her poems, are the ones which I would read again and again.</h2>
+<h2>I dont know, if there is anythings left worth mentioning about her which i forgot..</h2>
+<h2>Yea indeed..She's just a little creature on the surface of earth,</h2>
+<h2>that creates..a lot!</h2>
+<h2>Let me know below how was it, was there something missing or bad or anything,
+so ur next bd pey, ill make a better one!</h2>
+
+<h2>Byee!❤️</h2>
+<h3>(Calvin and Hobbes are enjoying fireworks, hehe)</h3>
+<h3>(click anywhere on this screen to have fireworks there!)</h3>
+</div>
+<canvas id="birthday" class="fireworks_bg"></canvas>
+
+<div class='fb-form'>
+  <form action='#' class='form-group'>
+
+    <textarea class='form-control' id='fb-comment' placeholder="⚠️Actuallyy, I tried a lot to implement it but i wasnt able to, so pls reply back to my mail or insta me ki how was it⚠️" ></textarea>
+
+    <input class='form-control btn btn-primary' id="sub_btn" type='submit'>
+  </form>
+</div>
+</div>
+
+
+</div>
+
+
+
+
+
+</body>
+
+
+
+
+
+<script>
+    var c = document.getElementById("c");
+var ctx = c.getContext("2d");
+
+var bc = document.createElement("canvas");
+var bCtx = bc.getContext("2d");
+
+var cw = c.width = bc.width = window.innerWidth,
+  cx = cw / 2;
+var ch = c.height = bc.height = window.innerHeight + 100,
+  cy = ch;
+
+var frames = 0;
+var requestId = null;
+var rad = (Math.PI / 180);
+var kappa = 0.5522847498;
+
+var x, y;
+bCtx.strokeStyle = "#abcdef";
+bCtx.lineWidth = 1;
+
+var balloons = [];
+
+function Balloon() {
+  this.r = randomIntFromInterval(20, 70);
+  this.R = 1.4 * this.r;
+  this.x = randomIntFromInterval(this.r, cw - this.r);
+  this.y = ch + 2 * this.r;
+  this.a = this.r * 4.5;
+  this.pm = Math.random() < 0.5 ? -1 : 1;
+  this.speed = randomIntFromInterval(1.5, 4);
+  this.k = this.speed / 5;
+  this.hue = this.pm > 0 ? "210" : "10";
+}
+
+function Draw() {
+
+  updateBallons(bCtx);
+
+  ctx.clearRect(0, 0, cw, ch);
+  var img = bc;
+  ctx.drawImage(img, 0, 0);
+
+  requestId = window.requestAnimationFrame(Draw);
+}
+//requestId = window.requestAnimationFrame(Draw);
+
+function Init() {
+  if (requestId) {
+    window.cancelAnimationFrame(requestId);
+    requestId = null;
+  }
+  cw = c.width = bc.width = window.innerWidth, cx = cw / 2;
+  ch = c.height = bc.height = window.innerHeight + 100, cy = ch;
+  bCtx.strokeStyle = "#abcdef";
+  bCtx.lineWidth = 1;
+  frames = 0;
+  balloons = [];
+
+  // Stop generating balloons after 10 seconds
+  setTimeout(function () {
+    if (requestId) {
+      window.cancelAnimationFrame(requestId);
+      requestId = null;
+      ctx.clearRect(0, 0, cw, ch);
+    }
+  }, 16000);
+
+  Draw();
+  
+}
+
+
+window.addEventListener('resize', Init, false);
+
+
+function updateBallons(ctx) {
+  frames += 1;
+  if (frames % 37 == 0 && balloons.length < 37) {
+    var balloon = new Balloon();
+    balloons.push(balloon);
+  }
+  ctx.clearRect(0, 0, cw, ch);
+
+  for (var i = 0; i < balloons.length; i++) {
+    var b = balloons[i];
+    if (b.y > -b.a) {
+      b.y -= b.speed
+    } else {
+      b.y = parseInt(ch + b.r + b.R);
+    }
+
+    var p = thread(b, ctx);
+    b.cx = p.x;
+    b.cy = p.y - b.R;
+    ctx.fillStyle = Grd(p.x, p.y, b.r, b.hue)
+    drawBalloon(b, ctx);
+  }
+}
+
+function drawBalloon(b, ctx) {
+
+  var or = b.r * kappa; // offset
+
+  var p1 = {
+    x: b.cx - b.r,
+    y: b.cy
+  }
+  var pc11 = {
+    x: p1.x,
+    y: p1.y + or
+  }
+  var pc12 = {
+    x: p1.x,
+    y: p1.y - or
+  }
+
+  var p2 = {
+    x: b.cx,
+    y: b.cy - b.r
+  }
+  var pc21 = {
+    x: b.cx - or,
+    y: p2.y
+  }
+  var pc22 = {
+    x: b.cx + or,
+    y: p2.y
+  }
+
+  var p3 = {
+    x: b.cx + b.r,
+    y: b.cy
+  }
+  var pc31 = {
+    x: p3.x,
+    y: p3.y - or
+  }
+  var pc32 = {
+    x: p3.x,
+    y: p3.y + or
+  }
+
+  var p4 = {
+    x: b.cx,
+    y: b.cy + b.R
+  };
+  var pc41 = {
+    x: p4.x + or,
+    y: p4.y
+  }
+  var pc42 = {
+    x: p4.x - or,
+    y: p4.y
+  }
+
+  var t1 = {
+    x: p4.x + .2 * b.r * Math.cos(70 * rad),
+    y: p4.y + .2 * b.r * Math.sin(70 * rad)
+  }
+  var t2 = {
+    x: p4.x + .2 * b.r * Math.cos(110 * rad),
+    y: p4.y + .2 * b.r * Math.sin(110 * rad)
+  }
+
+  //balloon
+  ctx.beginPath();
+  ctx.moveTo(p4.x, p4.y);
+  ctx.bezierCurveTo(pc42.x, pc42.y, pc11.x, pc11.y, p1.x, p1.y);
+  ctx.bezierCurveTo(pc12.x, pc12.y, pc21.x, pc21.y, p2.x, p2.y);
+  ctx.bezierCurveTo(pc22.x, pc22.y, pc31.x, pc31.y, p3.x, p3.y);
+  ctx.bezierCurveTo(pc32.x, pc32.y, pc41.x, pc41.y, p4.x, p4.y);
+  //knot
+  ctx.lineTo(t1.x, t1.y);
+  ctx.lineTo(t2.x, t2.y);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function thread(b, ctx) {
+  ctx.beginPath();
+
+  for (var i = b.a; i > 0; i -= 1) {
+    var t = i * rad;
+    x = b.x + b.pm * 50 * Math.cos(b.k * t - frames * rad)
+    y = b.y + b.pm * 25 * Math.sin(b.k * t - frames * rad) + 50 * t
+    ctx.lineTo(x, y)
+  }
+  ctx.stroke();
+  return p = {
+    x: x,
+    y: y
+  }
+}
+
+function Grd(x, y, r, hue) {
+  grd = ctx.createRadialGradient(x - .5 * r, y - 1.7 * r, 0, x - .5 * r, y - 1.7 * r, r);
+  grd.addColorStop(0, 'hsla(' + hue + ',100%,65%,.95)');
+  grd.addColorStop(0.4, 'hsla(' + hue + ',100%,45%,.85)');
+  grd.addColorStop(1, 'hsla(' + hue + ',100%,25%,.80)');
+  return grd;
+}
+
+function randomIntFromInterval(mn, mx) {
+  return ~~(Math.random() * (mx - mn + 1) + mn);
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const flames = document.querySelectorAll(".flame");
+
+  // Initialize an array to keep track of the blown state for each flame
+  const isBlownArray = Array.from({ length: flames.length }, () => false);
+
+  navigator.mediaDevices.getUserMedia({ audio: true })
+      .then((stream) => {
+          const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+          const microphone = audioContext.createMediaStreamSource(stream);
+          const analyser = audioContext.createAnalyser();
+
+          // Connect the microphone to the analyser
+          microphone.connect(analyser);
+
+          // Set up the analyser
+          analyser.fftSize = 256;
+          const bufferLength = analyser.frequencyBinCount;
+          const dataArray = new Uint8Array(bufferLength);
+
+          // Function to check audio input and blow the flames
+          function checkAudioInput() {
+              analyser.getByteFrequencyData(dataArray);
+              const average = dataArray.reduce((acc, val) => acc + val, 0) / bufferLength;
+
+              // Adjust the threshold value based on your preferences
+              const threshold = 130;
+
+              flames.forEach((flame, index) => {
+                  if (average > threshold && !isBlownArray[index]) {
+                      // Set the blown state to true
+                      isBlownArray[index] = true;
+
+                      // Add the blowing class to trigger the blow animation
+                      flame.classList.add("blowing");
+
+                      // Set the opacity to 0 after the blow animation completes
+                      setTimeout(() => {
+                          flame.style.opacity = 0;
+                      }, 1000);
+                  }
+              });
+
+              // Recursive call to continuously check the audio input
+              requestAnimationFrame(checkAudioInput);
+          }
+
+          // Start checking the audio input
+          checkAudioInput();
+      })
+      .catch((error) => {
+          console.error('Error accessing microphone:', error);
+      });
+});
+
+
+
+
+
+// helper functions
+const PI2 = Math.PI * 2
+const random = (min, max) => Math.random() * (max - min + 1) + min | 0
+const timestamp = _ => new Date().getTime()
+
+// container
+class Birthday {
+  constructor() {
+    this.resize()
+
+    // create a lovely place to store the firework
+    this.fireworks = []
+    this.counter = 0
+
+  }
+  
+  resize() {
+    this.width = canvas1.width = window.innerWidth
+    let center = this.width / 2 | 0
+    this.spawnA = center - center / 4 | 0
+    this.spawnB = center + center / 4 | 0
+    
+    this.height = canvas1.height = window.innerHeight
+    this.spawnC = this.height * .1
+    this.spawnD = this.height * .5
+    
+  }
+  
+  onClick(evt) {
+     let x = evt.clientX || evt.touches && evt.touches[0].pageX
+     let y = evt.clientY || evt.touches && evt.touches[0].pageY
+     
+     let count = random(3,5)
+     for(let i = 0; i < count; i++) this.fireworks.push(new Firework(
+        random(this.spawnA, this.spawnB),
+        this.height,
+        x,
+        y,
+        random(0, 260),
+        random(30, 110)))
+          
+     this.counter = -1
+     
+  }
+  
+  update(delta) {
+    ctx1.globalCompositeOperation = 'source-over'
+    ctx1.fillStyle = `rgba(0,0,0, ${ 1 * delta })`
+    ctx1.fillRect(0, 0, this.width, this.height)
+
+    ctx1.globalCompositeOperation = 'lighter'
+    for (let firework of this.fireworks) firework.update(delta)
+
+    // if enough time passed... create new new firework
+    this.counter += delta * 3 // each second
+    if (this.counter >= 1) {
+      this.fireworks.push(new Firework(
+        random(this.spawnA, this.spawnB),
+        this.height,
+        random(0, this.width),
+        random(this.spawnC, this.spawnD),
+        random(0, 360),
+        random(30, 110)))
+      this.counter = 0
+    }
+
+    // remove the dead fireworks
+    if (this.fireworks.length > 1000) this.fireworks = this.fireworks.filter(firework => !firework.dead)
+
+  }
+}
+
+class Firework {
+  constructor(x, y, targetX, targetY, shade, offsprings) {
+    this.dead = false
+    this.offsprings = offsprings
+
+    this.x = x
+    this.y = y
+    this.targetX = targetX
+    this.targetY = targetY
+
+    this.shade = shade
+    this.history = []
+  }
+  update(delta) {
+    if (this.dead) return
+
+    let xDiff = this.targetX - this.x
+    let yDiff = this.targetY - this.y
+    if (Math.abs(xDiff) > 3 || Math.abs(yDiff) > 3) { // is still moving
+      this.x += xDiff * 2 * delta
+      this.y += yDiff * 2 * delta
+
+      this.history.push({
+        x: this.x,
+        y: this.y
+      })
+
+      if (this.history.length > 20) this.history.shift()
+
+    } else {
+      if (this.offsprings && !this.madeChilds) {
+        
+        let babies = this.offsprings / 2
+        for (let i = 0; i < babies; i++) {
+          let targetX = this.x + this.offsprings * Math.cos(PI2 * i / babies) | 0
+          let targetY = this.y + this.offsprings * Math.sin(PI2 * i / babies) | 0
+
+          birthday.fireworks.push(new Firework(this.x, this.y, targetX, targetY, this.shade, 0))
+
+        }
+
+      }
+      this.madeChilds = true
+      this.history.shift()
+    }
+    
+    if (this.history.length === 0) this.dead = true
+    else if (this.offsprings) { 
+        for (let i = 0; this.history.length > i; i++) {
+          let point = this.history[i]
+          ctx1.beginPath()
+          ctx1.fillStyle = 'hsl(' + this.shade + ',100%,' + i + '%)'
+          ctx1.arc(point.x, point.y, 1, 0, PI2, false)
+          ctx1.fill()
+        } 
+      } else {
+      ctx1.beginPath()
+      ctx1.fillStyle = 'hsl(' + this.shade + ',100%,50%)'
+      ctx1.arc(this.x, this.y, 1, 0, PI2, false)
+      ctx1.fill()
+    }
+
+  }
+}
+
+let canvas1 = document.getElementById('birthday')
+let ctx1 = canvas1.getContext('2d')
+
+let then = timestamp()
+
+let birthday = new Birthday
+window.onresize = () => birthday.resize()
+document.onclick = evt => birthday.onClick(evt)
+document.ontouchstart = evt => birthday.onClick(evt)
+
+  ;(function loop(){
+  	requestAnimationFrame(loop)
+
+  	let now = timestamp()
+  	let delta = now - then
+    console.log(delta)
+
+    then = now
+    birthday.update(delta / 1000)
+  	
+
+  })()
+window.addEventListener('click', () => {
+  document.getElementById("song").play();
+
+})
+
+</script>
+
+</html>
